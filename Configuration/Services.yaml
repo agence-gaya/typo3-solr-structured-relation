@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Gaya\SolrStructuredRelation\:
+    resource: '../Classes/*'
+
+  ###  EXT:solr content objects
+  Gaya\SolrStructuredRelation\ContentObject\StructuredRelation:
+    arguments:
+      $tcaService: '@ApacheSolrForTypo3\Solr\System\TCA\TCAService'
+    tags:
+      - name: frontend.contentobject
+        identifier: 'SOLR_STRUCTURED_RELATION'
