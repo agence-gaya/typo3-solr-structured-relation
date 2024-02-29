@@ -146,7 +146,9 @@ final class StructuredRelation extends AbstractContentObject
                 $record = $this->getFrontendOverlayService()->getOverlay($foreignTableName, $record);
             }
 
-            $relatedItems[] = $record;
+            if ($record !== null) {
+                $relatedItems[] = $record;
+            }
         }
 
         return $relatedItems;
@@ -203,7 +205,9 @@ final class StructuredRelation extends AbstractContentObject
                 $relatedRecord = $this->getFrontendOverlayService()->getOverlay($foreignTableName, $relatedRecord);
             }
 
-            $relatedItems[] = $relatedRecord;
+            if ($relatedRecord !== null) {
+                $relatedItems[] = $relatedRecord;
+            }
         }
 
         return $relatedItems;
