@@ -4,7 +4,7 @@
   "type": "typo3-cms-extension",
   "license": "GPL-2.0-or-later",
   "require": {
-    "apache-solr-for-typo3/solr": "^12.0"
+    "apache-solr-for-typo3/solr": "^12.1.4"
   },
   "autoload": {
     "psr-4": {
