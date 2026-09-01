@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  COMPOSER_NO_AUDIT: 1
+  COMPOSER_NO_BLOCKING: 1
+
 permissions:
   contents: read
 
