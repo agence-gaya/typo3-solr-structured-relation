@@ -64,19 +64,16 @@ final class StructuredRelation extends AbstractContentObject
                 return '';
             }
             $relatedItems = $this->applyFieldsConfiguration($relatedItems);
-            $result = SolrBinaryUtility::encode($relatedItems[0]);
-        } else {
-            $relatedItems = $this->applyFieldsConfiguration($relatedItems);
-            $result = array_map([
-                SolrBinaryUtility::class,
-                'encode',
-            ], $relatedItems);
-            // multi value, need to serialize as content objects must return strings
-            // @see \Gaya\SolrStructuredRelation\SerializedValueDetector
-            $result = serialize($result);
+
+            return SolrBinaryUtility::encode($relatedItems[0]);
         }
 
-        return $result;
+        $relatedItems = $this->applyFieldsConfiguration($relatedItems);
+
+        return json_encode(
+            array_map([ SolrBinaryUtility::class, 'encode' ], $relatedItems),
+            JSON_THROW_ON_ERROR,
+        );
     }
 
     /**
